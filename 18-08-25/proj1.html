@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Box Model Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>CSS Box Model Demonstration</h1>
+
+  <div class="box">Content</div>
+
+  <div class="controls">
+    <label>
+      Margin: 
+      <input id="marginControl" type="range" min="0" max="50" value="20"> 
+      <span id="marginValue">20</span>px
+    </label>
+
+    <label>
+      Border: 
+      <input id="borderControl" type="range" min="0" max="20" value="5"> 
+      <span id="borderValue">5</span>px
+    </label>
+
+    <label>
+      Padding: 
+      <input id="paddingControl" type="range" min="0" max="50" value="30"> 
+      <span id="paddingValue">30</span>px
+    </label>
+  </div>
+
+  <div class="info">
+    <h2>Box Model Components</h2>
+    <ul>
+      <li><span class="margin"></span> <strong>Margin</strong> - Space outside the border (transparent)</li>
+      <li><span class="border"></span> <strong>Border</strong> - Surrounds the padding and content</li>
+      <li><span class="padding"></span> <strong>Padding</strong> - Space between border and content</li>
+      <li><span class="content"></span> <strong>Content</strong> - Actual content of the box</li>
+    </ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
