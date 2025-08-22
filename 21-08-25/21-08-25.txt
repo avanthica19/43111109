@@ -1,0 +1,32 @@
+show databases;
+use testdb;
+create table CSEE(
+id int primary key,
+name varchar(50),
+semester int);
+
+create table ECEE(
+id int primary key,
+name varchar(50),
+semester int);
+
+insert into CSEE(id, name,semester) values(1,'avan',2);
+insert into CSEE(id, name,semester) values(2,'tiffin',5);
+insert into CSEE(id, name,semester) values(3,'poo',3);
+insert into ECEE(id, name,semester) values(1,'harini',5);
+insert into ECEE(id, name,semester) values(2,'diiksha',5);
+insert into ECEE(id, name,semester) values(3,'pranav',4);
+select *from ECEE;
+select *from CSEE;
+
+alter table CSEE add email varchar(50);
+alter table ECEE add email varchar(50);
+
+update CSEE set email='avan@gmail.com' where id=1;
+update CSEE set email='tiff@gmail.com' where id=2;
+update CSEE set email='poo@gmail.com' where id=3;
+update ECEE set email='hari@gmail.com' where id=1;
+update ECEE set email='dii@gmail.com' where id=2;
+update ECEE set email='pran@gmail.com' where id=3;
+
+drop table cse;
