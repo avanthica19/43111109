@@ -1,0 +1,23 @@
+drop table cse;
+
+alter table ECEE add(
+scountry varchar(40) default 'india');
+alter table ECEE add(
+sage int, sphone int8);
+alter table ECEE drop column sage;
+
+alter table ECEE rename column scountry to slocation;
+update ECEE set semester=1 where id =2;
+update ECEE set slocation='UK' ,name= 'pra' where id=3;
+update ECEE set id= id+1;
+
+DELETE FROM CSEE WHERE name = 'tiffin';
+
+TRUNCATE TABLE csee;
+
+start transaction;
+UPDATE ecee SET semester = semester + 1 WHERE id = 2;
+savepoint sp1;
+UPDATE ecee SET semester = semester + 2 WHERE id = 2;
+ROLLBACK TO sp1;
+commit;
