@@ -1,0 +1,60 @@
+show databases;
+use testdb;
+CREATE TABLE Person (
+    id INT PRIMARY KEY,                  
+    first_name VARCHAR(50) NOT NULL,     
+    last_name VARCHAR(50) NOT NULL,     
+    age INT,
+    email varchar(50),
+    UNIQUE (email)     );  
+    
+INSERT INTO Person (id, first_name, last_name, age, email)
+VALUES (1, 'Avanthica', 'S', 20, 'avan@e.com');
+
+INSERT INTO Person (id, first_name, last_name, age, email)
+VALUES (2, 'tiffin', 'chelsea', 20, 'joe@c.com');
+
+INSERT INTO Person (id, first_name, last_name, age, email)
+VALUES (3, 'Jane', 'Smith', 30, 'janith@exe.com');
+
+ALTER TABLE Person
+ADD phone VARCHAR(15);
+
+desc person;
+
+ALTER TABLE person drop index last_name;
+
+SHOW INDEXES FROM Person;
+
+
+ALTER TABLE Person 
+MODIFY last_name VARCHAR(50) NULL;
+
+CREATE TABLE Personss (
+    id INT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    age INT CHECK (age >= 18),   
+    email VARCHAR(100) UNIQUE
+);
+
+ALTER TABLE Personss
+ADD CONSTRAINT chk_age CHECK (age >= 18);
+
+CREATE TABLE Category (
+    cid INT PRIMARY KEY,             
+    cname VARCHAR(50) NOT NULL,     
+    cdesc VARCHAR(100)               
+);
+
+INSERT INTO Category (cid, cname, cdesc) VALUES
+(1, 'Electronics', 'Devices and gadgets'),
+(2, 'Clothing', 'Apparel and accessories'),
+(3, 'Books', 'Fiction and non-fiction books');
+
+INSERT INTO Product (pid, pname, pdesc, cid) VALUES
+(101, 'Smartphone', 'Android mobile phone', 1),
+(102, 'Laptop', 'High performance laptop', 1),
+(103, 'T-Shirt', 'Cotton casual wear', 2),
+(104, 'Jeans', 'Denim pants', 2),
+(105, 'Novel', 'Bestselling fiction novel', 3);
