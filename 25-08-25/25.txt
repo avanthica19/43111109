@@ -1,0 +1,102 @@
+use mysql;
+show databases;
+CREATE TABLE Category (
+    cid INT PRIMARY KEY,            
+    cname VARCHAR(50) NOT NULL,      
+    cdesc VARCHAR(100)               
+);
+
+CREATE TABLE College (
+    college_id INT PRIMARY KEY,
+    college_name VARCHAR(100) NOT NULL
+);
+CREATE TABLE Department (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR(100) NOT NULL,
+    college_id INT,
+    FOREIGN KEY (college_id) REFERENCES College(college_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+CREATE TABLE Student (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(100) NOT NULL,
+    age INT,
+    dept_id INT,
+    FOREIGN KEY (dept_id) REFERENCES Department(dept_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+INSERT INTO College (college_id, college_name) VALUES
+(1, 'Sathyabama University'),
+(2, 'IIT Madras' ),
+(3, 'vit'),
+(4, 'srm');
+
+INSERT INTO Department (dept_id, dept_name, college_id) VALUES
+(101, 'Computer Science', 1),
+(102, 'Electronics', 1),
+(201, 'Mechanical', 2),
+(202, 'Civil', 2),
+(301, 'chem', 3),
+(302, 'computer science', 3),
+(401, 'bio', 4),
+(402, 'mechatronic', 4);
+
+INSERT INTO Student (student_id, student_name, age, dept_id) VALUES
+(1001, 'Avanthica S', 19, 101),
+(1002, 'tiffin', 20, 102),
+(1003, 'pranav', 21, 201),
+(1004, 'poornima', 22, 202),
+(1005, 'diiksa', 22, 301),
+(1006, 'harini', 22, 302),
+(1007, 'kri', 22, 401),
+(1008, 'priya', 22, 402);
+
+DELETE FROM College WHERE college_id = 1;
+
+UPDATE Department SET dept_id = 105 WHERE dept_id = 102;
+
+SELECT * 
+FROM Department 
+WHERE dept_name LIKE '%Comp%';
+
+
+CREATE VIEW CollegeNames AS
+SELECT college_id, college_name
+FROM College;
+
+SELECT * FROM CollegeNames;
+
+SELECT * 
+FROM College
+WHERE college_name LIKE 'S%';
+
+SELECT * 
+FROM Student
+WHERE student_name LIKE 'A%';
+
+SELECT * 
+FROM Student
+WHERE student_name LIKE '_a%';
+
+SELECT * 
+FROM Student
+WHERE student_name LIKE '%th%';
+
+
+CREATE VIEW DepartmentInfo AS
+SELECT dept_id, dept_name
+FROM Department;
+
+SELECT * FROM DepartmentInfo;
+
+
+CREATE VIEW AdultStudents AS
+SELECT student_id, student_name, age
+FROM Student
+WHERE age > 20;
+
+SELECT * FROM AdultStudents;
