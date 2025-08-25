@@ -41,6 +41,15 @@ CREATE TABLE Personss (
 ALTER TABLE Personss
 ADD CONSTRAINT chk_age CHECK (age >= 18);
 
+CREATE TABLE Product (
+    pid INT PRIMARY KEY,             
+    pname VARCHAR(50) NOT NULL,     
+    pdesc VARCHAR(100),             
+0
+    cid INT,                         
+    FOREIGN KEY (cid) REFERENCES Category(cid)   -- FK constraint
+);
+
 CREATE TABLE Category (
     cid INT PRIMARY KEY,             
     cname VARCHAR(50) NOT NULL,     
