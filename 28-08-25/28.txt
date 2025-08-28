@@ -1,0 +1,33 @@
+select first_name, department, salary from worker order by department ASC, salary DESC;
+select worker_id, first_name, salary from worker order by salary DESC;
+SELECT department, COUNT(*) AS total_workers FROM worker GROUP BY department;
+SELECT department, SUM(salary) AS total_salary FROM worker GROUP BY worker_id;
+SELECT department, MIN(salary) AS min_salary, MAX(salary) AS max_salary FROM worker GROUP BY department;
+SELECT department,worker_id, AVG(salary) AS avg_salary FROM worker GROUP BY department,worker_id ORDER BY avg_salary DESC;
+
+SELECT department, MAX(worker_id) AS last_worker, AVG(salary) AS avg_salary FROM worker
+GROUP BY department;
+
+select department, sum(salary) as total from worker group by department;
+SELECT department, AVG(salary) AS average_sal FROM worker GROUP BY department;
+select department, avg(salary) as average group by department having max(average);
+
+
+select count(*) from worker where department not in ('hr','admin');
+select department, max(salary) as maximum_salary from worker group by department;
+
+SELECT UPPER(first_name) AS name_in_upper FROM worker;
+SELECT lower(first_name) AS name_in_lower FROM worker;
+SELECT TRIM('   Hello World   ') AS trimm;
+SELECT LTRIM('   SQL') AS left_trimmed, 
+       RTRIM('SQL   ') AS right_trimmed;
+       
+SELECT worker_id, first_name FROM worker
+ORDER BY worker_id
+LIMIT 3 OFFSET 2;
+
+SELECT department, AVG(salary) AS avg_salary
+FROM worker
+GROUP BY department
+ORDER BY avg_salary DESC
+LIMIT 2 OFFSET 1;
